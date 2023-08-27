@@ -21,9 +21,35 @@
 }
 
 .button{
-    @apply border-2 rounded-md text-white px-3 py-1 hover:bg-transparent hover:scale-105 m-1;
+    @apply border-2 rounded-md px-3 py-1 hover:bg-transparent hover:scale-105 m-1;
 }
 
 .select-container{
     @apply bg-white border border-navyblue checked:bg-blue rounded-sm w-full px-2 py-1 cursor-pointer;
 }
+
+.pagination-button{
+    @apply text-blue text-xl hover:bg-navyblue hover:text-white;
+}
+
+
+/* table styling */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+th {
+    position: sticky;
+    background-color:theme('colors.navyblue');
+    color: theme('colors.white');
+    padding: 2px 4px;
+    text-align: left;
+  }
+
+  td {
+    padding: 0.5rem;
+    border-bottom: 1px solid;
+  }

@@ -1,13 +1,14 @@
-import { useState } from 'react'
+import React from 'react'
 import Hero from './pages/Hero'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
     <Hero/>
+    <ToastContainer />
     </>
   )
 }
