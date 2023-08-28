@@ -55,6 +55,10 @@ Start the server
 
 Visit link for demo:https://exploreplanet.netlify.app/
 
+## Snapshot
+![image](https://github.com/surazgaundel/ExoPlanet/assets/58950508/4e50421e-4b94-4099-bd3a-b45b0a905884)
+
+
 
 ## Features
 
