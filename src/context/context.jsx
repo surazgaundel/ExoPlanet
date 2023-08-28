@@ -44,7 +44,7 @@ export const PlanetProvider=({children})=>{
     //fetch data.
     const fetchAllPlanet=async()=>{
         try{
-            const response=await fetch('/src/utils/Data.csv');
+            const response=await fetch('/src/assets/utils/Data.csv');
             const result=await response.text();
             Papa.parse(result,{
                 header:true,
