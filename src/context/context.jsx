@@ -30,7 +30,8 @@ export const usePlanetContext=()=>{
 
 export const PlanetProvider=({children})=>{
     const [state,dispatch]=useReducer(reducer,initialState);
-
+    
+    // toast option for Notification
     const toastOptions={
         position: 'bottom-right',
         autoClose: 1500,
@@ -66,10 +67,10 @@ export const PlanetProvider=({children})=>{
     const getSearchValue=(e)=>{
         const name=e.target.name
         const value=e.target.value;
-        console.log(name,value);
         dispatch({type:'GET_SEARCH_VALUE',payload:{name,value}})
     }
     
+    //get results array based on search value
     const getResults=(e)=>{
         e.preventDefault();
         const {filters}=state;
@@ -84,9 +85,10 @@ export const PlanetProvider=({children})=>{
     }
 
 
+    //clear search value
     const clearSearch=(e)=>{
         e.preventDefault();
-        toast.info("Search query cleared!!", toastOptions);
+        toast.warn("Search query cleared!!", toastOptions);
         dispatch({type:'CLEAR_SEARCH'});
     }
 

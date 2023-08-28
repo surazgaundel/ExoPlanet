@@ -1,4 +1,4 @@
-import React, { createRef } from 'react'
+import React from 'react'
 import { usePlanetContext } from '../context/context';
 
 export default function Search() {

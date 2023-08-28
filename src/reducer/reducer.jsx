@@ -44,7 +44,6 @@ const reducer=(state,action)=>{
                     (filters.discoveryFacility === '' || item.disc_facility === filters.discoveryFacility)
                 );
             });
-            console.log(tempArray);
             return {...state,results:tempArray}    
         
         case 'CLEAR_SEARCH':

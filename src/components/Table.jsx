@@ -1,11 +1,12 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { usePlanetContext } from '../context/context'
-import { useReactTable,getCoreRowModel,flexRender,getPaginationRowModel } from '@tanstack/react-table';
+import { useReactTable,getCoreRowModel,flexRender,getPaginationRowModel,getSortedRowModel } from '@tanstack/react-table';
 import {AiOutlineDoubleLeft,AiOutlineLeft,AiOutlineDoubleRight,AiOutlineRight,AiOutlineArrowUp,AiOutlineArrowDown} from 'react-icons/ai';
+import {RxExternalLink} from 'react-icons/rx';
 export default function Table() {
     const {results}=usePlanetContext();
 
-    const data=useMemo(()=>results,[]);
+    const data=useMemo(()=>results,[results]);
 
     const [sortItem,setSortItem]=useState([])
 
@@ -14,7 +15,6 @@ export default function Table() {
         {
             header:'Planet Name',
             accessorKey:'planet_name',
-            url:planetNameUrl
         },
         {
             header:'Host Name',
@@ -39,6 +39,7 @@ export default function Table() {
         columns,
         getCoreRowModel:getCoreRowModel(),
         getPaginationRowModel:getPaginationRowModel(),
+        getSortedRowModel:getSortedRowModel(),
         state:{
             sorting:sortItem,
         },
@@ -49,9 +50,11 @@ export default function Table() {
     <div className='flex flex-col items-around justify-center'>
         <table className='table-auto'>
             {/* table header */}
-            {table.getHeaderGroups().map((headerGroup) =>{
+            <thead>
+
+            {table.getHeaderGroups().map((headerGroup,index) =>{
                 return(
-                <tr key={headerGroup.accessorKey}>
+                    <tr key={`${index}${headerGroup.accessorKey}`}>
                     {
                         headerGroup.headers.map((header,index)=>{
                             return(
@@ -73,16 +76,17 @@ export default function Table() {
                 </tr>
                 )
             })}
+            </thead>
 
             {/* table body */}
             <tbody>
-                {table.getRowModel().rows.map(row=>(
-                    <tr key={row.accessorKey}>
+                {table.getRowModel().rows.map((row,index)=>(
+                    <tr key={index}>
                         {row.getVisibleCells().map((cell,index)=>(
                             <td key={index}>
                                 {cell.column.columnDef.accessorKey==='planet_name'?(
-                                            <a href={`${cell.column.columnDef.url}${flexRender(cell.column.columnDef.cell,cell.getContext())}`} className='text-blue underline' target="_blank" rel="noopener noreferrer">
-                                            {flexRender(cell.column.columnDef.cell,cell.getContext())}</a>
+                                            <a href={`${planetNameUrl}${cell.getValue().split(' ').join('%20')}`} className='text-blue underline' target="_blank" rel="noopener noreferrer">
+                                            {flexRender(cell.column.columnDef.cell,cell.getContext())} <span className="inline-block pl-1"><RxExternalLink/></span></a>
                                 ):
                                 (flexRender(cell.column.columnDef.cell,cell.getContext()))
                             }
