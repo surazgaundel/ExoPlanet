@@ -48,6 +48,7 @@ export default function Table() {
 
   return (
     <div className='flex flex-col items-around justify-center'>
+        <span className='text-right text-xs'>**Click on header to sort items</span>
         <table className='table-auto'>
             {/* table header */}
             <thead>

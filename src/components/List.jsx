@@ -17,7 +17,7 @@ export default function List() {
   }
 
   return(
-    <div className="flex flex-col mt-5 justify-center text-sm md:text-base">
+    <div className="flex flex-col mt-5 justify-center text-xs md:text-sm lg:text-base">
       <h1 className='text-xl'>{results.length} Planet{results.length>1?'s':''} Found.</h1>
       {results.length>0 && (
         <Table/>

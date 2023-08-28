@@ -21,7 +21,7 @@ export default function Search() {
 
     return (
         <div>
-            <form className="flex flex-col lg:flex-row justify-between items-center shadow-lg px-2 py-1 gap-2 rounded-md mt-5">
+            <form className="flex flex-col lg:flex-row justify-between items-center shadow-lg px-2 py-1 gap-2 rounded-md mt-5 text-xs md:text-sm lg:text-base">
                 <div className=" flex flex-col md:flex-row justify-around w-[70%] md:w-[95%] lg:w-[80%] m-auto gap-2">
                 {/* hostName */}
                 <select value={hostName} className='select-container' name='hostName' id='sort' onChange={getSearchValue}>
